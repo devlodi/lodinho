@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodrigo Inacio Lodi da Silva</title>
+    <style>
+        /* Estilos gerais e tema dark */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+        }
+
+        header, main, footer {
+            padding: 1em;
+        }
+
+        header {
+            background-color: #444;
+            text-align: center;
+        }
+
+          button {
+            padding: 15px 15px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px; /* Bordas arredondadas */
+            background: linear-gradient(45deg, #ff0066, #ffcc00);
+            color: white;
+            font-size: 15px;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.4);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+
+#about-me-text {
+    font-size: 16px;  /* ou qualquer outro tamanho que você preferir */
+    line-height: 1.5; /* espaçamento entre linhas */
+    /* outros estilos que você queira aplicar */
+}   
+
+        /* Estilos para o conteúdo dinâmico */
+     #dynamic-content {
+    display: block;
+    margin-top: 20px;
+    padding: 1em;
+    text-align: center; /* Centralizar o texto */
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    overflow: visible;  /* Adicione esta linha */
+}
+
+        #dynamic-content.fade-out {
+    opacity: 0;
+}
+
+        #dynamic-content p {
+            font-size: 2em; /* Tamanho da fonte */
+            font-weight: bold; /* Negrito */
+        }
+
+        /* Estilos para o rodapé e imagem */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: #444;
+        }
+
+        @keyframes slide-up {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#footer-image-container {
+    animation: slide-up 3s ease-out;
+}
+
+#footer-image {
+    margin-bottom: -20px;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+        /* Responsividade para mobile */
+        @media (max-width: 600px) {
+
+
+
+
+            #dynamic-content p {
+                font-size: 1.5em;
+            }
+
+            button {
+                padding: 12px 24px;
+            }
+        }
+
+          .project-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .project-button {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .project-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+
+            /* Estilos para animação das imagens */
+        .hobby-image {
+            bottom: 30%;
+            max-width: 150px;
+            position: absolute;
+            left: -220px;
+            transition: all 1s ease-in-out;
+        }
+
+        .hobby-image.move-right {
+            left: 150px;
+        }
+
+      @media (max-width: 600px) {
+            /* ... Estilos existentes ... */
+
+            .hobby-image {
+                bottom: 60%;
+                max-width: 100px;
+                left: -250px;
+            }
+
+            #hobby-container {
+                position: relative;
+                height: 180px;
+            }
+
+            .hobby-button-mobile {
+                padding: 8px;
+                font-size: 10px;
+            }
+        }
+        
+@keyframes coolAnimation {
+  0%, 100% {
+    transform: translateY(0);
+    color: #ffffff;  /* Branco */
+  }
+  25% {
+    transform: translateY(-10px);
+    color: #000000;  /* Preto */
+  }
+  50% {
+    transform: translateY(10px);
+    color: #ffffff;  /* Branco */
+  }
+  75% {
+    transform: translateY(-10px);
+    color: #000000;  /* Preto */
+  }
+}
+
+#cool-text {
+     text-shadow: 5px 0px 7px  green;
+  animation: coolAnimation 3s infinite;  /* 2s de duração, loop infinito */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rodrigo Inacio Lodi da Silva</h1>
+        <button onclick="showContent('about-me')">Sobre Mim</button>
+        <button onclick="showContent('hobbies')">Hobbies</button>
+        <button onclick="showContent('projects')">Projetinhos que Fiz</button>
+    </header>
+    <main id="dynamic-content">
+       <p id="cool-text">Clique nos Botões para saber mais.</p>
+
+    </main>
+   <footer>
+    <div id="footer-image-container">
+        <img id="footer-image" src="https://static.wixstatic.com/media/b1ba1c_ae690f403b8c4055b67599bc32a13e30~mv2.webp" alt="Foto de Rodrigo">
+    </div>
+</footer>
+
+  <script>
+   function showContent(section) {
+    const content = document.getElementById("dynamic-content");
+        const footer = document.querySelector("footer");  // Adicione esta linha
+
+    content.style.display = "block";
+    content.style.padding = "1em";
+    
+    // Iniciar o efeito de desvanecer
+    content.classList.add("fade-out");
+
+    // Aguardar a animação de desvanecer terminar
+    setTimeout(function() {
+        // Aqui você atualiza o conteúdo como já fazia antes
+        let aboutMeHTML = `
+            
+             <p id="about-me-text">Meu nome é Rodrigo Inácio Lodi da Silva, tenho 26 anos e trabalho como assistente administrativo em uma empresa que vende, de forma terceirizada, bolões da Caixa Econômica Federal. <br><br> Gosto muito de fazer planilhas otimizadas usando AppScript do Google para controle dos dados da empresa. Me arrisco em algumas páginas web, mas ainda uso muito o chat GPT. 😢 <br><br> Meu objetivo principal é na área de programação web.</p>
+
+        `;
+
+        let hobbiesHTML = `
+            <h2>Hobbies</h2>
+            <button class="hobby-button-mobile" onclick="showHobby('bike')">1º HOBBIE</button>
+            <button class="hobby-button-mobile" onclick="showHobby('music')">2º HOBBIE</button>
+            <button class="hobby-button-mobile" onclick="showHobby('cook')">3º HOBBIE</button>
+            <div id="hobby-container">
+                <img id="hobby-image" class="hobby-image" src="" alt="Hobby Image"/>
+                <p id="hobby-text"></p>
+            </div>
+        `;
+
+        let projectsHTML = `
+            <h2>Projetinhos que Fiz</h2>
+            <div class="project-buttons">
+                <button class="project-button" onclick="window.open('https://marceloloterias.com/lotofacil-independencia-2023/')">Página de Venda Lotofácil Independência</button>
+                <button class="project-button" onclick="window.open('https://marceloloterias.com/prosperidade/')">Página para Entrar no Grupo</button>
+                <button class="project-button" onclick="window.open('https://marceloloterias.com/formas-de-pagamento-2/')">Página de Formas de Pagamento</button>
+            </div>
+        `;
+
+  switch (section) {
+        case 'about-me':
+            content.innerHTML = aboutMeHTML;
+            footer.style.position = "relative";  // Adicione esta linha
+            break;
+        case 'hobbies':
+            content.innerHTML = hobbiesHTML;
+            footer.style.position = "fixed";  // Adicione esta linha
+            break;
+        case 'projects':
+            content.innerHTML = projectsHTML;
+            footer.style.position = "fixed";  // Adicione esta linha
+            break;
+    }
+
+        // Iniciar o efeito de aparecer
+        content.classList.remove("fade-out");
+
+    }, 500); // 500 milissegundos é a duração do desvanecer, deve ser o mesmo que no CSS
+}
+
+function showHobby(hobby) {
+    const container = document.getElementById("hobby-container");
+    const text = document.getElementById("hobby-text");
+
+    // Criar novo elemento de imagem
+    let newImage = document.createElement('img');
+    newImage.id = 'hobby-image';
+    newImage.className = 'hobby-image';
+    newImage.style.left = '-220px';  // posição inicial
+
+    // Alterar a imagem e o texto
+    switch(hobby) {
+        case 'bike':
+            newImage.src = "https://static.wixstatic.com/media/b1ba1c_7ef22a209a0549e98b710136f702bde6~mv2.png";
+            text.textContent = "Andar de bike";
+            break;
+        case 'music':
+            newImage.src = "https://static.wixstatic.com/media/b1ba1c_f880ac7e64b74e4f837696eb621a03b7~mv2.png";
+            text.textContent = "Música";
+            break;
+        case 'cook':
+            newImage.src = "https://static.wixstatic.com/media/b1ba1c_33c6bd1eedf54c68b597fb699e7e313a~mv2.png";
+            text.textContent = "Cozinhar";
+            break;
+    }
+
+    // Remover imagem antiga, se existir
+    const oldImage = document.getElementById("hobby-image");
+    if (oldImage) {
+        container.removeChild(oldImage);
+    }
+
+    // Adicionar nova imagem
+    container.appendChild(newImage);
+
+    // Forçar recálculo de estilo
+    void newImage.offsetWidth;
+
+    // Iniciar animação
+    newImage.style.left = "160px";
+}
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
