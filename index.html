@@ -236,6 +236,7 @@
             <button class="hobby-button-mobile" onclick="showHobby('bike')">1º HOBBIE</button>
             <button class="hobby-button-mobile" onclick="showHobby('music')">2º HOBBIE</button>
             <button class="hobby-button-mobile" onclick="showHobby('cook')">3º HOBBIE</button>
+            <button class="hobby-button-mobile" onclick="showHobby('game')">4º HOBBIE</button>
             <div id="hobby-container">
                 <img id="hobby-image" class="hobby-image" src="" alt="Hobby Image"/>
                 <p id="hobby-text"></p>
@@ -245,9 +246,9 @@
         let projectsHTML = `
             <h2>Projetinhos que Fiz</h2>
             <div class="project-buttons">
-                <button class="project-button" onclick="window.open('https://marceloloterias.com/lotofacil-independencia-2023/')">Página de Venda Lotofácil Independência</button>
-                <button class="project-button" onclick="window.open('https://marceloloterias.com/prosperidade/')">Página para Entrar no Grupo</button>
-                <button class="project-button" onclick="window.open('https://marceloloterias.com/formas-de-pagamento-2/')">Página de Formas de Pagamento</button>
+                <button class="project-button" onclick="window.open('https://devlodi.github.io/calculadora_sushi_para_o_gustavo/')">Calculadora de sushi</button>
+                <button class="project-button" onclick="window.open('https://marceloloterias.com/prosperidade/')">Página para Entrar no Grupo da empresa</button>
+                <button class="project-button" onclick="window.open('https://devlodi.github.io/catalogo_inacio_aneethun/')">Catalogo de produtos anethum com carrinho e api whatsapp</button>
             </div>
         `;
 
@@ -296,6 +297,10 @@ function showHobby(hobby) {
             newImage.src = "https://static.wixstatic.com/media/b1ba1c_33c6bd1eedf54c68b597fb699e7e313a~mv2.png";
             text.textContent = "Cozinhar";
             break;
+        case 'game':
+            newImage.src = "https://images.vexels.com/media/users/3/215356/isolated/lists/7c6f4b5d275927d3dec64f6bb49f1e71-joystick-plano-de-controle-de-jogos.png";
+            text.textContent = "GAME";
+            break;    
     }
 
     // Remover imagem antiga, se existir
